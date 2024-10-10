@@ -53,8 +53,9 @@ const TOTPGenerator = () => {
           </button>
         </div>
         {otp && (
-          <div className="relative flex flex-col items-center justify-center">
-            <div className="absolute w-40 h-40 rounded-full border-4 border-gray-800">
+          <div className="flex flex-col items-center space-y-6">
+            <div className="relative w-40 h-40">
+              <div className="absolute w-full h-full rounded-full border-4 border-gray-800"></div>
               <div
                 className="absolute top-0 left-0 w-full h-full rounded-full border-4 border-green-500 transition-all duration-1000 ease-linear"
                 style={{
@@ -62,8 +63,8 @@ const TOTPGenerator = () => {
                 }}
               ></div>
             </div>
-            <div className="text-4xl font-mono font-bold text-white z-10 my-12">{otp}</div>
-            <div className="text-gray-500 mt-2">
+            <div className="text-4xl font-mono font-bold text-white">{otp}</div>
+            <div className="text-gray-500">
               Refreshes in: {timeLeft} seconds
             </div>
           </div>
