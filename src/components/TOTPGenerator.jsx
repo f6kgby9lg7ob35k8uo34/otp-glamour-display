@@ -4,7 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { ClipboardCopy, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 
 const TOTPGenerator = () => {
   const [secret, setSecret] = useState('');
@@ -35,43 +35,42 @@ const TOTPGenerator = () => {
   };
 
   return (
-    <Card className="w-full max-w-md bg-white/10 backdrop-blur-md border-none shadow-xl">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold text-white text-center">TOTP Generator</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
+    <Card className="w-full max-w-md bg-black border-none shadow-xl">
+      <CardContent className="space-y-8 p-6">
         <div className="relative">
           <Input
             type={showSecret ? 'text' : 'password'}
             value={secret}
             onChange={handleSecretChange}
             placeholder="Enter TOTP Secret"
-            className="bg-white/20 border-none text-white placeholder-white/50"
+            className="bg-gray-900 border-gray-700 text-white placeholder-gray-500"
           />
           <button
             onClick={() => setShowSecret(!showSecret)}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white"
           >
             {showSecret ? <EyeOff size={20} /> : <Eye size={20} />}
           </button>
         </div>
         {otp && (
-          <div className="text-center">
-            <div className="text-4xl font-mono font-bold text-white mb-2">{otp}</div>
-            <div className="text-white/70">
-              Refreshes in: {timeLeft} seconds
-            </div>
-            <div className="w-full bg-white/20 h-1 mt-2 rounded-full overflow-hidden">
+          <div className="relative flex flex-col items-center justify-center">
+            <div className="absolute w-48 h-48 rounded-full border-4 border-gray-800">
               <div
-                className="bg-green-400 h-full transition-all duration-1000 ease-linear"
-                style={{ width: `${(timeLeft / 30) * 100}%` }}
+                className="absolute top-0 left-0 w-full h-full rounded-full border-4 border-green-500 transition-all duration-1000 ease-linear"
+                style={{
+                  clipPath: `inset(0 ${100 - ((timeLeft / 30) * 100)}% 0 0)`,
+                }}
               ></div>
+            </div>
+            <div className="text-6xl font-mono font-bold text-white z-10 my-16">{otp}</div>
+            <div className="text-gray-500 mt-2">
+              Refreshes in: {timeLeft} seconds
             </div>
           </div>
         )}
         <CopyToClipboard text={otp} onCopy={handleCopy}>
           <Button
-            className="w-full bg-white/20 hover:bg-white/30 text-white border-none"
+            className="w-full bg-gray-800 hover:bg-gray-700 text-white border-none"
             disabled={!otp}
           >
             <ClipboardCopy className="mr-2" size={16} />
