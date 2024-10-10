@@ -54,7 +54,7 @@ const TOTPGenerator = () => {
         </div>
         {otp && (
           <div className="relative flex flex-col items-center justify-center">
-            <div className="absolute w-48 h-48 rounded-full border-4 border-gray-800">
+            <div className="absolute w-40 h-40 rounded-full border-4 border-gray-800">
               <div
                 className="absolute top-0 left-0 w-full h-full rounded-full border-4 border-green-500 transition-all duration-1000 ease-linear"
                 style={{
@@ -62,7 +62,7 @@ const TOTPGenerator = () => {
                 }}
               ></div>
             </div>
-            <div className="text-6xl font-mono font-bold text-white z-10 my-16">{otp}</div>
+            <div className="text-4xl font-mono font-bold text-white z-10 my-12">{otp}</div>
             <div className="text-gray-500 mt-2">
               Refreshes in: {timeLeft} seconds
             </div>
