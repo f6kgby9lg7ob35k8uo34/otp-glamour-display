@@ -54,7 +54,7 @@ const TOTPGenerator = () => {
         </div>
         {otp && (
           <div className="flex flex-col items-center space-y-6">
-            <div className="relative w-40 h-40 flex items-center justify-center">
+            <div className="relative w-40 h-40">
               <div className="absolute w-full h-full rounded-full border-4 border-gray-800"></div>
               <div
                 className="absolute top-0 left-0 w-full h-full rounded-full border-4 border-green-500 transition-all duration-1000 ease-linear"
@@ -62,8 +62,8 @@ const TOTPGenerator = () => {
                   clipPath: `inset(0 ${100 - ((timeLeft / 30) * 100)}% 0 0)`,
                 }}
               ></div>
-              <div className="text-4xl font-mono font-bold text-white z-10">{otp}</div>
             </div>
+            <div className="text-4xl font-mono font-bold text-white">{otp}</div>
             <div className="text-gray-500">
               Refreshes in: {timeLeft} seconds
             </div>
